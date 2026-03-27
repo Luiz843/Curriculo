@@ -1,17 +1,16 @@
 /**
  * @file Main.jsx
- * @description Página principal: orquestra Sidebar, Navbar e todas as seções
- *              de conteúdo. Controla o estado isOpen da Sidebar.
+ * @description Página principal: orquestra Navbar e todas as seções de conteúdo.
  * @author Luiz Carlos Polli <lcpolli@ucs.br>
  * @copyright 2025 Luiz Carlos Polli
  * @license MIT
- * @version 1.0.0
+ * @version 2.0.0
  */
 
 import React from "react";
-import Sidebar from "../components/Sidebar/Sidebar";
-import Navbar  from "../components/Navbar/Navbar";
+import Navbar   from "../components/Navbar/Navbar";
 import { MainContent } from "./Main.styles";
+import Hero     from "./sections/Hero";
 import About    from "./sections/About";
 import Resume   from "./sections/Resume";
 import Services from "./sections/Services";
@@ -20,24 +19,21 @@ import Projects from "./sections/Projects";
 import Contact  from "./sections/Contact";
 
 /**
- * @description Página raiz — monta layout com sidebar + navbar + seções.
+ * @description Página raiz — monta layout com navbar horizontal + seções.
  * @returns {JSX.Element} Elemento React renderizado
  */
 export default function Main() {
-    const [isOpen, setIsOpen] = React.useState(false);
-
     return (
         <>
-            <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
-            <Navbar  isOpen={isOpen} setIsOpen={setIsOpen} />
-
-            <MainContent open={isOpen}>
-                <About    />
-                <Resume   />
+            <Navbar />
+            <MainContent>
+                <Hero />
+                <About />
+                <Resume />
                 <Services />
-                <Skills   />
+                <Skills />
                 <Projects />
-                <Contact  />
+                <Contact />
             </MainContent>
         </>
     );

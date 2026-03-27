@@ -1,58 +1,59 @@
 /**
  * @file Services.styles.js
- * @description Styled-components da seção Services: grid de cards de serviços
- *              com ícone, título e descrição.
+ * @description Styled-components da seção Services: grid de cards com ícone,
+ *              título e descrição. Hover: borda #ffd100 + translateY(-5px).
  * @author Luiz Carlos Polli <lcpolli@ucs.br>
  * @copyright 2025 Luiz Carlos Polli
  * @license MIT
- * @version 1.0.0
+ * @version 2.0.0
  */
 
 import styled from "styled-components";
 
 export const ServicesGrid = styled.div`
     display: grid;
-    /* min(260px, 100%) garante coluna única em telas < 260px */
-    grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: 2rem;
     max-width: 1100px;
     margin: 0 auto;
 
     @media (max-width: 480px) {
-        gap: 1.25rem;
+        gap: 1.5rem;
     }
 `;
 
 export const ServiceCard = styled.div`
-    background-color: #2a2a2a;
-    border: 1px solid #444;
-    border-top: 4px solid #ffd100;
+    background-color: #1a1a1a;
+    border: 1px solid #2a2a2a;
     border-radius: 12px;
-    padding: 2rem 1.8rem;
+    padding: 2.5rem 2rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    transition: transform 0.2s, border-color 0.25s;
+    transition: border-color 0.3s ease, transform 0.3s ease;
 
     &:hover {
-        transform: translateY(-4px);
-        border-color: #ffee32;
+        border-color: #ffd100;
+        transform: translateY(-5px);
     }
 `;
 
-export const ServiceEmoji = styled.span`
+export const ServiceIcon = styled.span`
     font-size: 2.8rem;
+    line-height: 1;
 `;
 
 export const ServiceTitle = styled.h3`
-    color: #ffee32;
-    font-size: 1.25rem;
+    font-family: 'Playfair Display', serif;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 600;
     margin: 0;
 `;
 
 export const ServiceDescription = styled.p`
-    color: #ccc;
-    font-size: 0.95rem;
-    line-height: 1.7;
+    color: #aaa;
+    font-size: 0.93rem;
+    line-height: 1.75;
     margin: 0;
 `;

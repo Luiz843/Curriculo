@@ -6,7 +6,7 @@
  * @author Luiz Carlos Polli <lcpolli@ucs.br>
  * @copyright 2025 Luiz Carlos Polli
  * @license MIT
- * @version 1.0.0
+ * @version 2.0.0
  */
 
 import React from "react";
@@ -17,6 +17,8 @@ import {
     ResumeBlockTitle,
     Timeline,
     TimelineItem,
+    TimelineDot,
+    TimelineCard,
     TimelineDate,
     TimelineCompany,
     TimelineRole,
@@ -33,7 +35,7 @@ import {
  */
 export default function Resume() {
     return (
-        <Section title="Currículo" id="curriculo">
+        <Section title="Currículo" id="curriculo" sectionLabel="— Meu Currículo —" backgroundColor="#111111">
             <ResumeGrid>
                 {/* Coluna esquerda — Experiências */}
                 <div>
@@ -41,12 +43,15 @@ export default function Resume() {
                     <Timeline>
                         {experiences.map(({ start, end, company, role, location }) => (
                             <TimelineItem key={company}>
-                                <TimelineDate>{`${start} - ${end}`}</TimelineDate>
-                                <TimelineCompany>{company}</TimelineCompany>
-                                <TimelineRole>{role}</TimelineRole>
-                                {location && (
-                                    <TimelineLocation>{location}</TimelineLocation>
-                                )}
+                                <TimelineDot />
+                                <TimelineCard>
+                                    <TimelineDate>{`${start} – ${end}`}</TimelineDate>
+                                    <TimelineCompany>{company}</TimelineCompany>
+                                    <TimelineRole>{role}</TimelineRole>
+                                    {location && (
+                                        <TimelineLocation>{location}</TimelineLocation>
+                                    )}
+                                </TimelineCard>
                             </TimelineItem>
                         ))}
                     </Timeline>

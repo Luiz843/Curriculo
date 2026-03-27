@@ -1,63 +1,68 @@
 /**
  * @file Navbar.jsx
- * @description Barra de navegação fixa no topo. Em desktop acompanha a largura
- *              da Sidebar; em mobile (≤768px) ocupa 100% e exibe botão hamburguer
- *              que abre/fecha a Sidebar.
+ * @description Barra de navegação horizontal fixa no topo. Logo/nome à esquerda,
+ *              links à direita, fundo semi-transparente com backdrop blur.
+ *              Mobile: hamburguer abre menu dropdown interno.
  * @author Luiz Carlos Polli <lcpolli@ucs.br>
  * @copyright 2025 Luiz Carlos Polli
  * @license MIT
- * @version 1.0.0
+ * @version 2.0.0
  */
 
-import React from "react";
+import React, { useState } from "react";
 import {
     NavbarContainer,
-    Title,
+    NavBrand,
     NavContainer,
     NavLink,
     HamburgerBtn,
     HamburgerLine,
+    MobileMenu,
+    MobileNavLink,
 } from "./Navbar.styles";
 import { personalInfo } from "../../data/resume";
 
 /**
- * @description Navbar fixa com links de âncora e botão hamburguer em mobile.
- * @param {{ isOpen: boolean, setIsOpen: Function }} props
+ * @description Navbar fixa com links de âncora e menu mobile dropdown.
  * @returns {JSX.Element} Elemento React renderizado
  */
-export default function Navbar({ isOpen, setIsOpen }) {
-    const handleKeyDown = (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            setIsOpen(!isOpen);
-        }
-    };
+export default function Navbar() {
+    const [menuOpen, setMenuOpen] = useState(false);
+    const close = () => setMenuOpen(false);
 
     return (
-        <NavbarContainer open={isOpen} role="banner">
-            <Title>{personalInfo.name}</Title>
+        <NavbarContainer role="banner">
+            <NavBrand>{personalInfo.name}</NavBrand>
 
             <NavContainer aria-label="Navegação principal">
-                <NavLink href="#sobre">Sobre</NavLink>
-                <NavLink href="#curriculo">Currículo</NavLink>
-                <NavLink href="#servicos">Serviços</NavLink>
-                <NavLink href="#habilidades">Habilidades</NavLink>
-                <NavLink href="#projetos">Projetos</NavLink>
-                <NavLink href="#contato">Contato</NavLink>
+                <NavLink href="#sobre"       onClick={close}>Sobre</NavLink>
+                <NavLink href="#curriculo"   onClick={close}>Currículo</NavLink>
+                <NavLink href="#servicos"    onClick={close}>Serviços</NavLink>
+                <NavLink href="#habilidades" onClick={close}>Habilidades</NavLink>
+                <NavLink href="#projetos"    onClick={close}>Projetos</NavLink>
+                <NavLink href="#contato"     onClick={close}>Contato</NavLink>
             </NavContainer>
 
-            {/* Botão hamburguer — visível somente em mobile (CSS: display:none no desktop) */}
             <HamburgerBtn
-                onClick={() => setIsOpen(!isOpen)}
-                onKeyDown={handleKeyDown}
-                aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
-                aria-expanded={isOpen}
-                aria-controls="sidebar"
+                onClick={() => setMenuOpen(o => !o)}
+                aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+                aria-expanded={menuOpen}
             >
-                <HamburgerLine open={isOpen} />
-                <HamburgerLine open={isOpen} />
-                <HamburgerLine open={isOpen} />
+                <HamburgerLine open={menuOpen} />
+                <HamburgerLine open={menuOpen} />
+                <HamburgerLine open={menuOpen} />
             </HamburgerBtn>
+
+            {menuOpen && (
+                <MobileMenu>
+                    <MobileNavLink href="#sobre"       onClick={close}>Sobre</MobileNavLink>
+                    <MobileNavLink href="#curriculo"   onClick={close}>Currículo</MobileNavLink>
+                    <MobileNavLink href="#servicos"    onClick={close}>Serviços</MobileNavLink>
+                    <MobileNavLink href="#habilidades" onClick={close}>Habilidades</MobileNavLink>
+                    <MobileNavLink href="#projetos"    onClick={close}>Projetos</MobileNavLink>
+                    <MobileNavLink href="#contato"     onClick={close}>Contato</MobileNavLink>
+                </MobileMenu>
+            )}
         </NavbarContainer>
     );
 }

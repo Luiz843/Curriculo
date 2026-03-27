@@ -1,11 +1,11 @@
 /**
  * @file Contact.jsx
- * @description Seção de contato com formulário (Nome, Email, Mensagem, Enviar)
- *              e links para GitHub, LinkedIn e email provenientes de personalInfo.
+ * @description Seção de contato: info de contato à esquerda (email, GitHub,
+ *              LinkedIn) e formulário à direita.
  * @author Luiz Carlos Polli <lcpolli@ucs.br>
  * @copyright 2025 Luiz Carlos Polli
  * @license MIT
- * @version 1.0.0
+ * @version 2.0.0
  */
 
 import React from "react";
@@ -13,24 +13,57 @@ import Section from "../../components/Section/Section";
 import { personalInfo } from "../../data/resume";
 import {
     ContactWrapper,
+    ContactInfo,
+    ContactInfoTitle,
+    ContactInfoLink,
     ContactForm,
     ContactInput,
     ContactTextarea,
     ContactButton,
-    ContactSocial,
-    ContactSocialTitle,
-    ContactSocialLink,
 } from "./Contact.styles";
 
 /**
- * @description Seção de contato com formulário e links sociais de personalInfo.
+ * @description Seção de contato com info à esquerda e formulário à direita.
  * @returns {JSX.Element} Elemento React renderizado
  */
 export default function Contact() {
     return (
-        <Section title="Contato" id="contato">
+        <Section title="Contato" id="contato" sectionLabel="— Entre em contato —" backgroundColor="#111111">
             <ContactWrapper>
-                {/* Formulário */}
+                {/* Coluna esquerda — informações de contato */}
+                <ContactInfo>
+                    <ContactInfoTitle>Onde me encontrar</ContactInfoTitle>
+
+                    <ContactInfoLink
+                        href={`mailto:${personalInfo.email}`}
+                        aria-label="Email"
+                    >
+                        <span aria-hidden="true">✉️</span>
+                        {personalInfo.email}
+                    </ContactInfoLink>
+
+                    <ContactInfoLink
+                        href={personalInfo.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="GitHub"
+                    >
+                        <span aria-hidden="true">🐙</span>
+                        github.com/Luiz843
+                    </ContactInfoLink>
+
+                    <ContactInfoLink
+                        href={personalInfo.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="LinkedIn"
+                    >
+                        <span aria-hidden="true">💼</span>
+                        LinkedIn
+                    </ContactInfoLink>
+                </ContactInfo>
+
+                {/* Coluna direita — formulário */}
                 <ContactForm>
                     <ContactInput
                         type="text"
@@ -55,36 +88,6 @@ export default function Contact() {
                         Enviar
                     </ContactButton>
                 </ContactForm>
-
-                {/* Links sociais */}
-                <ContactSocial>
-                    <ContactSocialTitle>Onde me encontrar</ContactSocialTitle>
-
-                    <ContactSocialLink
-                        href={personalInfo.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="GitHub"
-                    >
-                        <span>🐙</span> GitHub
-                    </ContactSocialLink>
-
-                    <ContactSocialLink
-                        href={personalInfo.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="LinkedIn"
-                    >
-                        <span>💼</span> LinkedIn
-                    </ContactSocialLink>
-
-                    <ContactSocialLink
-                        href={`mailto:${personalInfo.email}`}
-                        aria-label="Email"
-                    >
-                        <span>✉️</span> Email
-                    </ContactSocialLink>
-                </ContactSocial>
             </ContactWrapper>
         </Section>
     );

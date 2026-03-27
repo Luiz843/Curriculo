@@ -1,66 +1,67 @@
 /**
  * @file Section.styles.js
- * @description Styled-components do container genérico de seção e seu título.
+ * @description Styled-components do container genérico de seção: fade-in,
+ *              label decorativo em amarelo, título Playfair Display centralizado.
  * @author Luiz Carlos Polli <lcpolli@ucs.br>
  * @copyright 2025 Luiz Carlos Polli
  * @license MIT
- * @version 1.0.0
+ * @version 2.0.0
  */
 
 import styled from "styled-components";
 
 export const SectionContainer = styled.section`
-    min-height: 100vh;
-    padding: 4rem 2rem;
-    background-color: ${props => props.backgroundColor || 'transparent'};
-    scroll-margin-top: 3.5rem;
+    padding: 80px 2rem;
+    background-color: ${p => p.backgroundColor || '#1a1a1a'};
+    scroll-margin-top: 4rem;
+    opacity:    ${p => p.visible ? '1' : '0'};
+    transform:  ${p => p.visible ? 'translateY(0)' : 'translateY(28px)'};
+    transition: opacity 0.65s ease, transform 0.65s ease;
 
-    /* ── Tablet ──── */
     @media (max-width: 768px) {
-        padding: 3rem 1rem;
-        min-height: auto;
+        padding: 60px 1.5rem;
     }
 
-    /* ── Mobile ──── */
     @media (max-width: 480px) {
-        padding: 2.5rem 0.75rem;
-    }
-
-    /* ── Mobile pequeno ──── */
-    @media (max-width: 320px) {
-        padding: 2rem 0.5rem;
+        padding: 50px 1rem;
     }
 `;
 
+export const SectionLabel = styled.p`
+    color: #ffd100;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 0.75rem;
+`;
+
 export const SectionTitle = styled.h2`
-    color: #ffee32;
+    font-family: 'Playfair Display', serif;
+    color: #ffffff;
     font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-weight: 700;
+    margin-bottom: 3.5rem;
     text-align: center;
     position: relative;
 
     &::after {
         content: '';
         display: block;
-        width: 100px;
+        width: 60px;
         height: 3px;
         background-color: #ffd100;
-        margin: 1rem auto;
+        margin: 1rem auto 0;
+        border-radius: 2px;
     }
 
-    /* ── Tablet ──── */
     @media (max-width: 768px) {
         font-size: 2rem;
+        margin-bottom: 2.5rem;
     }
 
-    /* ── Mobile ──── */
     @media (max-width: 480px) {
         font-size: 1.75rem;
-        margin-bottom: 1.5rem;
-    }
-
-    /* ── Mobile pequeno ──── */
-    @media (max-width: 320px) {
-        font-size: 1.5rem;
     }
 `;

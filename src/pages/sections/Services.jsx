@@ -5,7 +5,7 @@
  * @author Luiz Carlos Polli <lcpolli@ucs.br>
  * @copyright 2025 Luiz Carlos Polli
  * @license MIT
- * @version 1.0.0
+ * @version 2.0.0
  */
 
 import React from "react";
@@ -14,12 +14,13 @@ import { services } from "../../data/resume";
 import {
     ServicesGrid,
     ServiceCard,
+    ServiceIcon,
     ServiceTitle,
     ServiceDescription,
 } from "./Services.styles";
 
-/** Emojis associados ao índice de cada serviço */
-const EMOJIS = ["💻", "🛠️", "📊"];
+/** Ícones unicode associados ao índice de cada serviço */
+const ICONS = ["💻", "🛠️", "📊"];
 
 /**
  * @description Seção de serviços com grid de cards.
@@ -27,11 +28,11 @@ const EMOJIS = ["💻", "🛠️", "📊"];
  */
 export default function Services() {
     return (
-        <Section title="Serviços" id="servicos">
+        <Section title="Serviços" id="servicos" sectionLabel="— O que faço —" backgroundColor="#111111">
             <ServicesGrid>
                 {services.map(({ title, description }, index) => (
                     <ServiceCard key={title}>
-                        <span style={{ fontSize: "2.8rem" }}>{EMOJIS[index]}</span>
+                        <ServiceIcon aria-hidden="true">{ICONS[index]}</ServiceIcon>
                         <ServiceTitle>{title}</ServiceTitle>
                         <ServiceDescription>{description}</ServiceDescription>
                     </ServiceCard>

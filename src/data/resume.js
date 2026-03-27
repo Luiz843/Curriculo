@@ -107,3 +107,30 @@ export const typedStrings = [
     skills.slice(5, 10).join(', '),  // PL/SQL, PostgreSQL, Oracle SQL, Lua, C
     skills.slice(10).join(', '),     // Git, Linux, VMware, Scrum, MVC, REST APIs
 ];
+
+// ── Strings animadas para o Hero (Typed.js) ───────────────────────
+
+/**
+ * Títulos profissionais exibidos com animação de digitação na Hero section.
+ * @type {string[]}
+ */
+export const heroTypedStrings = [
+    "Desenvolvedor Web Júnior",
+    "Analista de Sistemas",
+    "Entusiasta de TI",
+];
+
+// ── Barras de progresso de habilidades ───────────────────────────
+
+/**
+ * @typedef  {{ name: string, percent: number }} SkillBar
+ * @type {SkillBar[]}
+ */
+export const skillBars = [
+    { name: "HTML5/CSS3",  percent: 90 },
+    { name: "PHP",         percent: 85 },
+    { name: "Git",         percent: 85 },
+    { name: "JavaScript",  percent: 80 },
+    { name: "React",       percent: 75 },
+    { name: "PostgreSQL",  percent: 70 },
+];
