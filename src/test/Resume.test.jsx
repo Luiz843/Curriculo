@@ -34,9 +34,9 @@ describe('Resume — experiências', () => {
     expect(screen.getByText(/vero dellaudo/i)).toBeInTheDocument();
   });
 
-  it('exibe período Out/2024 - Atual', () => {
+  it('exibe período Out/2024 – Atual', () => {
     render(<Resume />);
-    expect(screen.getByText(/out\/2024 - atual/i)).toBeInTheDocument();
+    expect(screen.getByText(/out\/2024 – atual/i)).toBeInTheDocument();
   });
 });
 

@@ -1,7 +1,7 @@
 /**
  * @file About.test.jsx
  * @description Testes unitários do componente About: verifica que os dados
- *              reais de personalInfo (name e bio) são renderizados.
+ *              reais de personalInfo (name, bio, email e location) são renderizados.
  * @author Luiz Carlos Polli <lcpolli@ucs.br>
  * @copyright 2025 Luiz Carlos Polli
  * @license MIT
@@ -31,9 +31,10 @@ describe('About — dados de personalInfo', () => {
         expect(screen.getByText(personalInfo.location)).toBeInTheDocument();
     });
 
-    it('renderiza o cargo de personalInfo.role', () => {
+    it('renderiza o email de personalInfo.email como link mailto', () => {
         render(<About />);
-        expect(screen.getByText(personalInfo.role)).toBeInTheDocument();
+        const link = screen.getByText(personalInfo.email);
+        expect(link).toHaveAttribute('href', `mailto:${personalInfo.email}`);
     });
 
     it('seção tem id="sobre"', () => {

@@ -10,3 +10,14 @@
  */
 
 import '@testing-library/jest-dom';
+
+// jsdom não implementa IntersectionObserver (usado em Section e Skills).
+// Stub mínimo para que os componentes montem nos testes.
+class IntersectionObserverMock {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+    takeRecords() { return []; }
+}
+
+globalThis.IntersectionObserver = IntersectionObserverMock;
