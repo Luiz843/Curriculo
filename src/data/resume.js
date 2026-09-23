@@ -14,12 +14,12 @@
 /** @type {{ name: string, role: string, email: string, github: string, linkedin: string, location: string, bio: string }} */
 export const personalInfo = {
     name: "Luiz Carlos Polli",
-    role: "Desenvolvedor Web Júnior",
+    role: "Desenvolvedor Web",
     email: "lcpolli@ucs.br",
     github: "https://github.com/Luiz843",
     linkedin: "https://www.linkedin.com/in/luiz-carlos-polli-8124161a1/",
     location: "Caxias do Sul, RS",
-    bio: "Desenvolvedor Web Júnior com experiência em PHP, HTML, CSS, JavaScript, React e PostgreSQL. Arquitetura MVC, testes unitários, documentação técnica e metodologias ágeis (Scrum). Familiaridade com Linux, Git, administração de servidores e suporte a equipamentos de TI.",
+    bio: "Desenvolvedor Web com experiência em PHP, HTML, CSS, JavaScript, React e PostgreSQL. Arquitetura MVC, testes unitários, documentação técnica e metodologias ágeis (Scrum). Familiaridade com Linux, Git, administração de servidores e suporte a equipamentos de TI.",
 };
 
 // ── Experiências profissionais ────────────────────────────────────
@@ -31,7 +31,7 @@ export const personalInfo = {
 export const experiences = [
     {
         company: "Plenatech",
-        role: "Desenvolvedor Web Júnior",
+        role: "Desenvolvedor Web",
         start: "Out/2024",
         end: "Atual",
         location: "Caxias do Sul, RS",
@@ -115,7 +115,7 @@ export const typedStrings = [
  * @type {string[]}
  */
 export const heroTypedStrings = [
-    "Desenvolvedor Web Júnior",
+    "Desenvolvedor Web",
     "Analista de Sistemas",
     "Entusiasta de TI",
 ];

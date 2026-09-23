@@ -19,9 +19,9 @@ describe('Resume — experiências', () => {
     expect(screen.getByText(/plenatech/i)).toBeInTheDocument();
   });
 
-  it('exibe cargo Desenvolvedor Web Júnior', () => {
+  it('exibe cargo Desenvolvedor Web', () => {
     render(<Resume />);
-    expect(screen.getByText(/desenvolvedor web júnior/i)).toBeInTheDocument();
+    expect(screen.getByText(/desenvolvedor web/i)).toBeInTheDocument();
   });
 
   it('exibe Roni Chaves na linha do tempo', () => {
